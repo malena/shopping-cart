@@ -10,6 +10,11 @@ app.config(function($routeProvider){
         {
             templateUrl: 'review.html'
         }
+        .when('/success',
+        {
+            templateUrl: 'success.html'
+        }
+    )
     )
 });
 
