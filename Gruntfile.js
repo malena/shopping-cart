@@ -19,7 +19,9 @@ module.exports = function(grunt) {
 				files: [
                     'app/index.jade', 
                     'app/views/products.jade',
-                    'app/views/review.jade'
+                    'app/views/review.jade',
+                    'app/views/success.jade'
+
                 ],
 				tasks: ['jade'],
 				options: {
@@ -50,7 +52,8 @@ module.exports = function(grunt) {
 				files: {
                     'index.html' : 'app/index.jade',
                     'products.html' : 'app/views/products.jade',
-                    'review.html' : 'app/views/review.jade'
+                    'review.html' : 'app/views/review.jade',
+                    'success.html' : 'app/views/success.jade'
 				}
 			}
 		},

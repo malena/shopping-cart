@@ -9,12 +9,11 @@ app.config(function($routeProvider){
         .when('/review',
         {
             templateUrl: 'review.html'
-        }
+        })
         .when('/success',
         {
             templateUrl: 'success.html'
         }
-    )
     )
 });
 
