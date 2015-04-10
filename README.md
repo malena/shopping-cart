@@ -2,7 +2,8 @@
 
 Shopping Cart example built with Angular.
 
-### Install
+### Run Project
 
 npm install
+
 grunt serve
