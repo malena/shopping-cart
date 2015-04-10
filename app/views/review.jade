@@ -1,0 +1,14 @@
+.container(ng-controller="ProductListController")
+    .page-header
+        h1 Review your order
+
+    .well.row(product-directive)
+        p Total Books: {{totalQty}}
+        p Total Price: ${{totalPrice}}
+
+    .btn-group
+        button(ng-click="go('/')", type="button", class="btn btn-default") Back 
+        button(ng-click="go('/review')", type="button", class="btn btn-primary") Confirm 
+
+
+        

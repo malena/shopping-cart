@@ -1,0 +1,21 @@
+doctype html
+html
+	head(lang="en")
+		title Shopping Cart 
+		link(type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+
+	body(ng-app="ShoppingCart")
+		div(ng-view)
+
+		
+	script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.9/angular.js")
+	script(src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular-route.js")
+
+
+	script(src="app/app.js")
+	
+	script(src="app/services/productService.js")
+	script(src="app/controllers/productListController.js")
+
+	script(src="test/angular-mocks.js")
+	script(src="test/app-test.js")
