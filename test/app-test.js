@@ -45,4 +45,6 @@ app.run(function($httpBackend) {
 
     $httpBackend.whenGET(/\.html$/).passThrough();
     $httpBackend.whenGET('/product-list').respond(productList);
+
+    // $httpBackend.whenPOST('/shopping-list').respond(shoppingList);
 });

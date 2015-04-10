@@ -1,10 +1,20 @@
-.container(ng-controller="ProductListController")
+.container(ng-controller="ReviewListController")
     .page-header
         h1 Review your order
 
-    .well.row(product-directive)
-        p Total Books: {{totalQty}}
-        p Total Price: ${{totalPrice}}
+    .panel.panel-default
+        .panel-body
+            ul.list-group(product-directive)
+                li.list-group-item(ng-repeat='item in cart')
+                    p Book: {{item.name}}
+                    p Item Price: ${{item.price}}
+                    p Quantity: {{item.qty}}
+                    p Total Price {{item.calculateTotal()}}
+
+        .panel-footer
+            p Total: {{cart.total}}
+
+
 
     .btn-group
         button(ng-click="go('/')", type="button", class="btn btn-default") Back 
