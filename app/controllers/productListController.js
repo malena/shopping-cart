@@ -16,9 +16,9 @@ app.controller("ProductListController", ["$scope", "$location", "$route", "Produ
     });
 
     $scope.updateCart = function(){
+        $scope.cart.updateList($scope.list);
         $scope.totalQty = $scope.cart.totalQty($scope.list);
         $scope.totalPrice = $scope.cart.totalPrice($scope.list);
-        $scope.cart.updateList($scope.list);
     };
 
     $scope.go = function(path) {

@@ -1,7 +1,11 @@
 app.controller("ReviewListController", ["$scope", "$location", "ShoppingCart", function ($scope, $location, ShoppingCart){
-    $scope.cart = ShoppingCart.shoppingList;
+    $scope.cart = ShoppingCart;
 
     $scope.go = function(path) {
         $location.path(path);
     };
+
+    $scope.list = ShoppingCart.shoppingList;
+
+    $scope.totalPrice = $scope.cart.totalPrice(ShoppingCart.shoppingList);
 }]);
