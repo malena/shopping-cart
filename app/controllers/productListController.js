@@ -15,27 +15,10 @@ app.controller("ProductListController", ["$scope", "$location", "$route", "Produ
         $scope.list = list;
     });
 
-    $scope.updateCart = function() {
-        $scope.totalQty = 0;
-        $scope.totalPrice = 0;
-        $scope.cart.length = 0;
-
-        for (var i = 0; i < $scope.list.length; i++) {
-            var item = $scope.list[i];
-            if (item.checked) {
-                $scope.totalQty = $scope.totalQty + item.qty;
-                $scope.totalPrice = $scope.totalPrice + item.calculateTotal();
-
-                if(item.qty > 0) {
-                    if(item.checked == true){
-                        $scope.cart.push(item);
-                    } else {
-                        $scope.cart.length = 0;
-                        $scope.cart.push(item);
-                    }
-                }
-            }
-        }
+    $scope.updateCart = function(){
+        $scope.totalQty = $scope.cart.totalQty($scope.list);
+        $scope.totalPrice = $scope.cart.totalPrice($scope.list);
+        $scope.cart.updateList($scope.list);
     };
 
     $scope.go = function(path) {
