@@ -29,4 +29,7 @@ app.service('ShoppingCart', [function() {
         }
     };
     this.shoppingList = [];
+    this.confirmationNumber = function(){
+        return '009';
+    }; 
 }]);

@@ -2,17 +2,26 @@
     .page-header
         h1 Review your order
 
-    .panel.panel-default
-        .panel-body
-            ul.list-group(product-directive)
-                li.list-group-item(ng-repeat='item in list')
-                    p Book: {{item.name}}
-                    p Item Price: ${{item.price}}
-                    p Quantity: {{item.qty}}
-                    p Total Price {{item.calculateTotal()}}
-
+    .panel.panel-default.mdl-review-list
+        .panel-body(product-directive)
+            table.table.table-stripped
+                thead
+                    tr
+                        th
+                        th Unit Price
+                        th Quantity
+                        th Total Price
+                tbody
+                    tr(ng-repeat='item in list')
+                        th
+                            img(src="https://placekitten.com/g/96/139" alt="...")
+                            h3 {{item.name}}
+                        th ${{item.price}}
+                        th {{item.qty}}
+                        th ${{item.calculateTotal()}}
+ 
         .panel-footer
-            p Total: {{totalPrice}}
+            p Total Price: ${{totalPrice}}
 
 
 

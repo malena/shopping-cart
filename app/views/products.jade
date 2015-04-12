@@ -4,16 +4,18 @@
         p Items in your cart: {{totalQty}}
         p Total price: ${{totalPrice}}
 
-    .well.row
+    .panel.row
         div(ng-repeat="item in list", class="col-xs-6 col-sm-3") 
-            .thumbnail 
-                .caption(product-directive) 
+            .thumbnail
+                img(src="https://placekitten.com/g/96/139" alt="...")
+                .caption
                     h3 {{item.name}}
-                    p {{item.description}}
-                    p ${{item.price}}
-                    .input-group
-                        span.input-group-addon
-                            input(type="checkbox", ng-model="item.checked", ng-change="updateCart()")
-                        input(type="number", min="0", ng-disabled="!item.checked", ng-model="item.qty", class="form-control", ng-change="updateCart()")
+                    p Price: ${{item.price}}
+                    .mdl-form-quantity
+                        .input-group
+                            span.input-group-addon Quantity:
+                            span.input-group-addon
+                                input(type="checkbox", ng-model="item.checked", ng-change="updateCart()")
+                            input(type="number", min="0", ng-disabled="!item.checked", ng-model="item.qty", class="form-control", ng-change="updateCart()")
 
     button(ng-click="go('/review')", class="btn btn-primary") Review 

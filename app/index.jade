@@ -3,6 +3,7 @@ html
 	head(lang="en")
 		title Shopping Cart 
 		link(type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+		link(type="text/css" rel="stylesheet" href="public/dist/css/project.min.css")
 
 	body(ng-app="ShoppingCart")
 		div(ng-view)
@@ -19,6 +20,7 @@ html
 
 	script(src="app/controllers/productListController.js")
 	script(src="app/controllers/reviewListController.js")
+	script(src="app/controllers/successListController.js")
 
 	script(src="test/angular-mocks.js")
 	script(src="test/app-test.js")

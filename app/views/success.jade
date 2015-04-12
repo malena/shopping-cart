@@ -1,10 +1,11 @@
-.container
+.container(ng-controller="SuccessListController")
     .page-header
         h1 Successfully purchased books! 
 
     .panel.panel-default
         .panel-body
-            p Total Order Price:
-            p Confirmation Number:
+            p Total Order Price: ${{totalPrice}}
+            p Confirmation Number: {{confirmationNumber}}
 
-        
+    .btn-group
+        button(ng-click="go('/')", type="button", class="btn btn-default") Browse Books on Sale 

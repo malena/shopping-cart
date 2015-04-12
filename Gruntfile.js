@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 				livereload: true,
 			},
 			css: {
-				files: ['app/static/css/index.styl'],
+				files: ['app/static/css/*.styl'],
 				tasks: ['stylus'],
 				options: {
 					livereload: true,
@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 			},
 			compile: {
 				files: {
-					'public/dist/css/project.min.css' : 'app/static/css/*.styl'
+					'public/dist/css/project.min.css' : 'app/static/css/index.styl'
 				}
 			}
 		},
