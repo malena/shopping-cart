@@ -1,35 +1,40 @@
 app.service('ShoppingCart', [function() {
-    this.totalQty = function (list){
-        var totalQty = 0;
-        for (var i = 0; i < list.length; i++) {
-            var item = list[i];
-            if (item.checked) {
-                totalQty = totalQty + item.qty;
+    this.shoppingList = [];
+
+    this.initializeList = function (items) {
+        for (var i = 0 ; i < items.length; i++) {
+            var item = items[i];
+            item.qty = 0;
+            item.calculateTotal = function() {
+                return this.qty * this.price;
             }
+            this.shoppingList.push(item);
+        }
+    }
+    this.checkedItems = function () {
+        var checked = [];
+        for (var i = 0; i < this.shoppingList.length; i++) {
+            var item = this.shoppingList[i];
+            if (item.checked) {
+                checked.push(item);
+            }
+        }
+        return checked;
+    };
+    this.totalQty = function () {
+        var totalQty = 0;
+        var checked = this.checkedItems();
+        for (var i = 0; i < checked.length; i++) {
+            totalQty += checked[i].qty;
         }
         return totalQty;
     };
-    this.totalPrice = function(list){
+    this.totalPrice = function () {
         var totalPrice = 0;
-        for (var i = 0; i < list.length; i++) {
-            var item = list[i];
-            if (item.checked) {
-                totalPrice = totalPrice + item.calculateTotal();
-            }
+        var checked = this.checkedItems();
+        for (var i = 0; i < checked.length; i++) {
+            totalPrice += checked[i].calculateTotal();
         }
         return totalPrice;
     };
-    this.updateList = function(list){
-        this.shoppingList.length = 0;
-        for (var i = 0; i < list.length; i++) {
-            var item = list[i];
-            if (item.checked && item.qty > 0) {
-                this.shoppingList.push(item);
-            }
-        }
-    };
-    this.shoppingList = [];
-    this.confirmationNumber = function(){
-        return '009';
-    }; 
 }]);

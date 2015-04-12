@@ -5,7 +5,5 @@ app.controller("SuccessListController", ["$scope", "$location", "ShoppingCart", 
         $location.path(path);
     };
 
-    $scope.totalPrice = $scope.cart.totalPrice(ShoppingCart.shoppingList);
-
-    $scope.confirmationNumber = $scope.cart.confirmationNumber();
+    $scope.confirmationNumber = '909000';
 }]);

@@ -12,7 +12,7 @@
                         th Quantity
                         th Total Price
                 tbody
-                    tr(ng-repeat='item in list')
+                    tr(ng-repeat='item in cart.checkedItems()')
                         th
                             img(src="https://placekitten.com/g/96/139" alt="...")
                             h3 {{item.name}}
@@ -21,7 +21,7 @@
                         th ${{item.calculateTotal()}}
  
         .panel-footer
-            p Total Price: ${{totalPrice}}
+            p Total Price: ${{cart.totalPrice()}}
 
 
 

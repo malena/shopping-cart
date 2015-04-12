@@ -1,24 +1,20 @@
 app.controller("ProductListController", ["$scope", "$location", "$route", "ProductService", "ShoppingCart", function ($scope, $location, $route, ProductService, ShoppingCart){
-    $scope.totalQty = 0;
-    $scope.totalPrice = 0;
-    $scope.cart = ShoppingCart;
-
-    var listPromise = ProductService.getList();
-
-    listPromise.success(function (list) {
-        for (var i = 0 ; i < list.length; i++) {
-            list[i].qty = 0;
-            list[i].calculateTotal = function() {
-                return this.qty * this.price;
+    if (ShoppingCart.shoppingList.length === 0) {
+        var listPromise = ProductService.getList();
+        listPromise.success(function (list) {
+            if ($scope.cart.shoppingList.length === 0) {
+                $scope.cart.initializeList(list);
             }
-        }
-        $scope.list = list;
-    });
+        });
+    }
+
+    $scope.cart = ShoppingCart;
+    $scope.totalQty = ShoppingCart.totalQty();
+    $scope.totalPrice = ShoppingCart.totalPrice();
 
     $scope.updateCart = function(){
-        $scope.cart.updateList($scope.list);
-        $scope.totalQty = $scope.cart.totalQty($scope.list);
-        $scope.totalPrice = $scope.cart.totalPrice($scope.list);
+        $scope.totalQty = $scope.cart.totalQty();
+        $scope.totalPrice = $scope.cart.totalPrice();
     };
 
     $scope.go = function(path) {

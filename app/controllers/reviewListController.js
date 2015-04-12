@@ -5,7 +5,4 @@ app.controller("ReviewListController", ["$scope", "$location", "ShoppingCart", f
         $location.path(path);
     };
 
-    $scope.list = ShoppingCart.shoppingList;
-
-    $scope.totalPrice = $scope.cart.totalPrice(ShoppingCart.shoppingList);
 }]);
