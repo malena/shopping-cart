@@ -5,4 +5,9 @@ app.controller("ReviewListController", ["$scope", "$location", "ShoppingCart", f
         $location.path(path);
     };
 
+    $scope.submit = function() {
+        $scope.cart.postItems();
+        $location.path('/success');
+    };
+
 }]);

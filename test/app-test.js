@@ -1,4 +1,5 @@
 app.run(function($httpBackend) {
+    var shoppingList = [];
     var productList = [
         {
             'id': '001', 
@@ -45,6 +46,10 @@ app.run(function($httpBackend) {
 
     $httpBackend.whenGET(/\.html$/).passThrough();
     $httpBackend.whenGET('/product-list').respond(productList);
+    $httpBackend.whenPOST('/shopping-list').respond(function(method, url, data, headers){
+        console.log('Received these data:', method, url, data, headers);
+        shoppingList.push(angular.fromJson(data));       
+        return[200, {}, {}];
+    });
 
-    // $httpBackend.whenPOST('/shopping-list').respond(shoppingList);
 });

@@ -25,6 +25,12 @@ app.service('ShoppingCart', ['$http', '$q', function ($http, $q) {
             });
         });
     };
+    this.postItems = function(){
+        var self = this;
+        $http.post('/shopping-list', self.shoppingList).success(function(){
+            self.shoppingList.length = 0;
+        });
+    };
     this.checkedItems = function () {
         var checked = [];
         for (var i = 0; i < this.shoppingList.length; i++) {
