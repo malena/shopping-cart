@@ -1,8 +1,14 @@
-.container(ng-controller="ReviewListController")
+.container.mdl-review(ng-controller="ReviewListController")
     .page-header
-        h1 Review your order
+        div.pull-left
+            h1 Shopping Cart Details
+            p Review your shopping list and click on confirm
+        div.pull-right 
+            span.glyphicon.glyphicon-shopping-cart(aria-hidden="true")
+            span  Shopping Cart: ({{cart.totalQty()}})
+            p ${{cart.totalPrice()}}
 
-    .panel.panel-default.mdl-review-list
+    .panel.panel-default.row.dl-review-list
         .panel-body(product-directive)
             table.table.table-stripped
                 thead
@@ -27,7 +33,7 @@
 
     .btn-group
         button(ng-click="go('/')", type="button", class="btn btn-default") Back 
-        button(ng-click="go('/success')", type="button", class="btn btn-primary") Confirm 
+        button(ng-click="confirmCart()", type="button", class="btn btn-primary") Confirm 
 
 
         

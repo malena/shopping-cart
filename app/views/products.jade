@@ -1,11 +1,15 @@
-.container(ng-controller="ProductListController")
+.container.mdl-products(ng-controller="ProductListController")
     .page-header
-        h1 Books on Sale 
-        p Items in your cart: {{totalQty}}
-        p Total price: ${{totalPrice}}
+        div.pull-left
+            h1 Books on Sale
+            p Choose a book and quantity to add to your Shopping Cart
+        div.pull-right 
+            span.glyphicon.glyphicon-shopping-cart(aria-hidden="true")
+            span  Shopping Cart: ({{totalQty}})
+            p ${{totalPrice}}
 
     .panel.row
-        div(ng-repeat="item in cart.shoppingList", class="col-xs-6 col-sm-3") 
+        div(ng-repeat="item in items", class="col-xs-6 col-sm-3") 
             .thumbnail
                 img(src="https://placekitten.com/g/96/139" alt="...")
                 .caption
@@ -13,9 +17,9 @@
                     p Price: ${{item.price}}
                     .mdl-form-quantity
                         .input-group
-                            span.input-group-addon Quantity:
+                            span.input-group-addon Qty:
                             span.input-group-addon
                                 input(type="checkbox", ng-model="item.checked", ng-change="updateCart()")
                             input(type="number", min="0", ng-disabled="!item.checked", ng-model="item.qty", class="form-control", ng-change="updateCart()")
 
-    button(ng-click="go('/review')", class="btn btn-primary") Review 
+    button(ng-click="checkCart()" class="btn btn-primary") Review Shopping Cart

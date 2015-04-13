@@ -1,16 +1,30 @@
-app.service('ShoppingCart', [function() {
+app.service('ShoppingCart', ['$http', '$q', function ($http, $q) {
     this.shoppingList = [];
 
-    this.initializeList = function (items) {
-        for (var i = 0 ; i < items.length; i++) {
-            var item = items[i];
-            item.qty = 0;
-            item.calculateTotal = function() {
-                return this.qty * this.price;
+    this.getItems = function () {
+        var self = this;
+
+        return $q(function (resolve, reject) {
+            if (self.shoppingList.length > 0) {
+                resolve(self.shoppingList);
+                return;
             }
-            this.shoppingList.push(item);
-        }
-    }
+
+            $http.get('/product-list').success(function (products) {
+                for (var i = 0 ; i < products.length; i++) {
+                    var item = products[i];
+                    item.qty = 0;
+                    item.calculateTotal = function() {
+                        return this.qty * this.price;
+                    }
+                    self.shoppingList.push(item);
+                }
+                resolve(self.shoppingList);
+            }).error(function () {
+                reject('Could not load products');
+            });
+        });
+    };
     this.checkedItems = function () {
         var checked = [];
         for (var i = 0; i < this.shoppingList.length; i++) {
