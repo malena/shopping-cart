@@ -2,6 +2,7 @@ app.controller("SuccessListController", ["$scope", "$location", "ShoppingCart", 
     $scope.cart = ShoppingCart;
 
     $scope.go = function(path) {
+        $scope.cart.shoppingList.length = 0; 
         $location.path(path);
     };
 
