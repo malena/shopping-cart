@@ -27,8 +27,9 @@ app.service('ShoppingCart', ['$http', '$q', function ($http, $q) {
     };
     this.postItems = function(){
         var self = this;
-        $http.post('/shopping-list', self.shoppingList).success(function(){
-            self.shoppingList.length = 0;
+        $http.post('/shopping-list', self.shoppingList).success(function(data){
+            console.log(data.confirmation);
+            self.confirmationNumber = data.confirmation;
         });
     };
     this.checkedItems = function () {

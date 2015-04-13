@@ -49,7 +49,7 @@ app.run(function($httpBackend) {
     $httpBackend.whenPOST('/shopping-list').respond(function(method, url, data, headers){
         console.log('Received these data:', method, url, data, headers);
         shoppingList.push(angular.fromJson(data));       
-        return[200, {}, {}];
+        return[200, {confirmation:123456789}, {}];
     });
 
 });
